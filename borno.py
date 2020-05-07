@@ -86,6 +86,27 @@ print  """\033[1;91m=======================================
 \033[1;91m======================================="""
 print " \x1b[1;93m============================================================="
 
+def masuk():
+	os.system('reset')
+	print logo
+	print "\033[1;91m║--\033[1;91m> \033[1;95m1.\033[1;96m Login"
+	print "\033[1;92m║--\033[1;91m> \033[1;95m2.\033[1;96m Login using token"
+	print "\033[1;93m║--\033[1;91m> \033[1;95m0.\033[1;96m Exit"
+	print "\033[1;95m║"
+	msuk = raw_input("\033[1;96m╚═\033[1;1mD \033[1;93m")
+	if msuk =="":
+		print"\033[1;91m[!] Wrong input"
+		keluar()
+	elif msuk =="1":
+		login()
+	elif msuk =="2":
+		tokenz()
+	elif msuk =="0":
+		keluar()
+	else:
+		print"\033[1;91m[!] Wrong input"
+		keluar()
+		
 CorrectUsername = "name nai"
 CorrectPassword = "kisui nai"
 
