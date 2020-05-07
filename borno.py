@@ -2,18 +2,27 @@
 #coding=utf-8
 
 
-import os,sys,time,datetime,random,hashlib,re,threading,json,urllib,cookielib,requests,mechanize
+import os,sys,time,datetime,random,hashlib,re,threading,json,getpass,urllib,cookielib
 from multiprocessing.pool import ThreadPool
+try:
+	import mechanize
+except ImportError:
+	os.system("pip2 install mechanize")
+try:
+	import requests
+except ImportError:
+	os.system("pip2 install requests")
 from requests.exceptions import ConnectionError
 from mechanize import Browser
 
-
+#-Setting-#
+########
 reload(sys)
 sys.setdefaultencoding('utf8')
 br = mechanize.Browser()
 br.set_handle_robots(False)
 br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(),max_time=1)
-br.addheaders = [('User-Agent', 'Opera/9.80 (Android; Opera Mini/32.0.2254/85. U; id) Presto/2.12.423 Version/12.16')]
+br.addheaders = [('User-Agent','Opera/9.80 (Android; Opera Mini/32.0.2254/85. U; id) Presto/2.12.423 Version/12.16')]
 
 
 def keluar():
@@ -66,12 +75,26 @@ def tik():
 	for o in titik:
 		print("\r\033[1;96m[●] \x1b[1;93mSedang masuk \x1b[1;97m"+o),;sys.stdout.flush();time.sleep(1)
 
-
 back = 0
+threads = []
 berhasil = []
 cekpoint = []
 oks = []
+gagal = []
+idteman = []
+idfromteman = []
+idmem = []
+emmem = []
+nomem = []
 id = []
+em = []
+emfromteman = []
+hp = []
+hpfromteman = []
+reaksi = []
+reaksigrup = []
+komen = []
+komengrup = []
 listgrup = []
 vulnot = "\033[31mNot Vuln"
 vuln = "\033[32mVuln"
